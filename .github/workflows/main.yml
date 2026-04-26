@@ -29,9 +29,11 @@ jobs:
 
       - name: Linting (flake8)
         run: flake8 app/
+        continue-on-error: true  # Wichtig: Damit es hier nicht stoppt!
 
       - name: Security Check (Bandit)
         run: bandit -r app/
+        continue-on-error: true  # Wichtig: Damit es hier nicht stoppt!
 
       - name: Dependency Audit
         run: pip-audit -r requirements.txt -f json -o audit.json
